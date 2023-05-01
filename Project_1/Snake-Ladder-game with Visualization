@@ -1,18 +1,27 @@
 #!/bin/bash
 
 
+echo "***************************************************"
+echo " "
+echo "You are playing Snake Ladder Flight Chess"
+echo " Remember you have 10 chances to get to 50"
+echo " The shorter the route, the better score"
+echo " There are ladders to accelerate your journey, and nemesis, snakes to bring you down"
+echo "\n"
+echo "*******************************************************"
 
 starting_number=0
 current_number=$starting_number
-echo "You are playing Snake Ladder Flight Chess"
 counter=0
 
-while [ $counter -le 6 ]; do
+while [ $counter -le 10 ]; do
     echo "press any key to select a number randomly between 1 and 6"
+    echo "\n"
     read -n 1 -s
     echo "Rolling the die..."
     random_number=$(shuf -i 1-6 -n 1)
     echo "The die shows "
+    echo "\n"
 
     case $random_number in
     1)
@@ -21,6 +30,7 @@ while [ $counter -le 6 ]; do
         echo "|   *   |"
         echo "|       |"
         echo " ------- "
+        echo "\n"
         ;;
     2)
         echo " ------- "
@@ -28,6 +38,7 @@ while [ $counter -le 6 ]; do
         echo "|       |"
         echo "|     * |"
         echo " ------- "
+        echo "\n"
         ;;
     3)
         echo " ------- "
@@ -35,6 +46,7 @@ while [ $counter -le 6 ]; do
         echo "|   *   |"
         echo "|     * |"
         echo " ------- "
+        echo "\n"
         ;;
     4)
         echo " ------- "
@@ -42,6 +54,7 @@ while [ $counter -le 6 ]; do
         echo "|       |"
         echo "| *   * |"
         echo " ------- "
+        echo "\n"
         ;;
     5)
         echo " ------- "
@@ -49,6 +62,7 @@ while [ $counter -le 6 ]; do
         echo "|   *   |"
         echo "| *   * |"
         echo " ------- "
+        echo "\n"
         ;;
     6)
         echo " ------- "
@@ -56,6 +70,7 @@ while [ $counter -le 6 ]; do
         echo "| *   * |"
         echo "| *   * |"
         echo " ------- "
+        echo "\n"
         ;;
     esac
 
@@ -63,99 +78,295 @@ while [ $counter -le 6 ]; do
     cummulative_num=$current_number
         
     #ladder 
-
+    
     if [ $current_number -eq 2 ] 
     then
-        cummulative_num=7
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=7
+        echo "Congratulations, You got a ladder to reach"
+        echo "    $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    $cummulative_num"
+        echo "\n"
+
     elif [ $current_number -eq 14 ]
     then
-        cummulative_num=42
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=42
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
 
     elif [ $current_number -eq 31 ] 
     then
-        cummulative_num=40
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=40
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
 
     elif [ $current_number -eq 20 ]
     then
-        cummulative_num=29
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=29
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
+
     elif [ $current_number -eq 10 ]
     then
-        cummulative_num=19
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=19
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
 
     elif [ $current_number -eq 35 ] 
     then
-        cummulative_num=45
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
+        current_number=45
+        
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
 
         
     elif [ $current_number -eq 4 ]
     then
-        cummulative_num=15
-        echo "Congratulations, You got a ladder to reach $cummulative_num"
-
+        current_number=15
+        echo "Congratulations, You got a ladder"
+        echo "   To $current_number"
+        echo " //--^--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "//---|--//"
+        echo "    From $cummulative_num"
+        echo "\n"
     #Snake bite
 
     elif [ $current_number -eq 8 ] 
     then
-        cummulative_num=3
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=3
+        echo "You aint lucky this time, You got bitten by a snake"
+        echo "       To $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "        From $current_number"
+        echo "\n"
 
     elif [ $current_number -eq 31 ]
     then 
-        cummulative_num=9
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=9
+        echo "You aint lucky this time, You got bitten by a snake"
+
+       echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
 
     elif [ $current_number -eq 43 ]
     then 
-        cummulative_num=12
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=12
+        echo "You aint lucky this time, You got bitten by a snake"
+        
+         echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
     elif [ $current_number -eq 32 ]
     then 
-        cummulative_num=30
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=30
+        echo "You aint lucky this time, You got bitten by a snake"
+        echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
     elif [ $current_number -eq 49 ]
     then 
-        cummulative_num=39
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=39
+        echo "You aint lucky this time, You got bitten by a snake"
+        echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
     elif [ $current_number -eq 46 ]
     then 
-        cummulative_num=36
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=36
+        echo "You aint lucky this time, You got bitten by a snake"
+         echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
     elif [ $current_number -eq 47 ]
     then 
-        cummulative_num=37
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
+        current_number=37
+        echo "You aint lucky this time, You got bitten by a snake"
+         echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
     elif [ $current_number -eq 27 ]
     then 
-        cummulative_num=17
-        echo "You aint lucky this time, You got bitten by a snake, down to $cummulative_num"
-
-    elif [ $cummulative_num -eq 50 ]
+        current_number=17
+        echo "You aint lucky this time, You got bitten by a snake"
+        echo "       From $cummulative_num"
+        echo "        ____"
+        echo "       / . .\ "
+        echo "      (   /  )"
+        echo "       \(__)|"
+        echo "         ||"
+        echo "         ||"
+        echo "          \\"
+        echo "           \\"
+        echo "           //" 
+        echo "          //" 
+        echo "         //" 
+        echo "         \\" 
+        echo "          \_\_"
+        echo "          To $current_number"
+        echo "\n"
+    elif [ $current_number -eq 50 ]
     then 
-        echo "You have won!"
+        echo "Congratulations, you got the magic number 50!"
         break
-    elif [ $cummulative_num -gt 50 ]
+    elif [ $current_number -gt 50 ]
     then 
         echo "you have exceeded the limit, try again next time"
         break
 
     else
 
-        echo "You neither got a ladder nor got bitten by the snake, you made a stride now at $cummulative_num!"
+        echo "You neither got a ladder nor got bitten by the snake, you made a stride now at $current_number!"
 
     fi
     starting_number=$cummulative_num
     counter=$(($counter + 1))
-    if [ $counter -gt 6 ]
+    if [ $counter -ge 10 ]
     then 
-        echo "You have exhausted your number trials: $counter without reaching 50"
+        echo "You have exhausted your number of trials: $counter without reaching 50"
+        echo "You scored $((50-$current_number)) out of 50"
+        echo "Try again next time!"
         break
     fi
-
+    
 
     done
