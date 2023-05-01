@@ -1,14 +1,14 @@
 #!/bin/bash
 
 
-echo "***************************************************"
 echo " "
+echo "***************************************************"
 echo "You are playing Snake Ladder Flight Chess"
 echo " Remember you have 10 chances to get to 50"
 echo " The shorter the route, the better score"
 echo " There are ladders to accelerate your journey, and nemesis, snakes to bring you down"
-echo "\n"
 echo "*******************************************************"
+echo "\n"
 
 starting_number=0
 current_number=$starting_number
@@ -363,7 +363,7 @@ while [ $counter -le 10 ]; do
     if [ $counter -ge 10 ]
     then 
         echo "You have exhausted your number of trials: $counter without reaching 50"
-        echo "You scored $((50-$current_number)) out of 50"
+        echo "You were $((50-$current_number)) shy of the ultimate(50)"
         echo "Try again next time!"
         break
     fi
