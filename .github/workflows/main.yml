@@ -1,0 +1,16 @@
+name: Starter Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  greet:
+     runs-on: ubuntu-latest
+     steps:
+     - name: say hello
+     run: echo "Hello,world"
+    
+  
