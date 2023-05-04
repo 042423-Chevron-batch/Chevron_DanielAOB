@@ -48,6 +48,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: .net-app
+      - name: Install Azure CLI
+        run: |
+           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+           sudo apt-get update
+           sudo apt-get install azure-cli
+
       - name: Azure Login
         uses: azure/login@v1
         
