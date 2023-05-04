@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/nightly/sdk:7.0
+
+WORKDIR /app
+
+COPY Program.cs .
+COPY Hangman.csproj .
+
+RUN dotnet publish -o Hangman
+
+
+CMD ["dotnet", "Hangman/Hangman.dll"]
