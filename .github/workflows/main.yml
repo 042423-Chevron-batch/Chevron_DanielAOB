@@ -53,8 +53,7 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
-      - run: |
-          az webapp list --query "[?state=='Running']"
+ 
         
         
       - name: Deploy to Azure Web App
