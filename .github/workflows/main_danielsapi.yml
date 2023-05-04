@@ -47,10 +47,10 @@ jobs:
         with:
           name: .net-app
       - name: Azure Login
-        uses: Azure/login@v1
+        uses: danielob/login@v1
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+        uses: danielob/webapps-deploy@v2
         with:
           app-name: 'Danielsapi'
           slot-name: 'Production'
