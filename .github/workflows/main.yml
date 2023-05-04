@@ -55,7 +55,7 @@ jobs:
         id: deploy-to-webapp
         uses: danielob/webapps-deploy@v2
         with:
-          app-name: 'marksapi'
+          app-name: 'danielsapi'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D1036E737B70482692D72BE58BF71711 }}
           package: .
