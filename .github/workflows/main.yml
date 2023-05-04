@@ -48,11 +48,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: .net-app
-      - name: Install Azure CLI
-        run: |
-           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-           sudo apt-get update
-           sudo apt-get install azure-cli
+      
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
+      - run: |
+          az webapp list --query "[?state=='Running']"
+        
         
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -62,6 +65,9 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
           package: .
+          
+
+      
           
         
         
