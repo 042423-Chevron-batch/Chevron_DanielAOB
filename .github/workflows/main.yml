@@ -53,9 +53,6 @@ jobs:
            curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
            sudo apt-get update
            sudo apt-get install azure-cli
-
-      - name: Azure Login
-        uses: azure/login@v1
         
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -65,3 +62,6 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
           package: .
+          
+        
+        
