@@ -64,5 +64,6 @@ jobs:
           app-name: 'danielsapi'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
-          allow-no-subscriptions: true
+      - run: |
+          az webapp list --query "[?state=='Running']"
           package: .
