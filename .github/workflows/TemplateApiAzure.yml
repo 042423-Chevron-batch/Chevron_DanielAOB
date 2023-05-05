@@ -40,15 +40,15 @@ jobs:
          with:
           context: ${{ env.WORKING_DIR }}
           push: true
-          tags: 10402033/templateapi:v2
+          tags: 10402033/templateapi:$(echo $(uuidv4) | tr "[:upper:]" "[:lower:]")
 
        
-       - name: Upload artifact for deployment job
-         uses: actions/upload-artifact@v2
-         with:
-          name: .net-app
-          path: Template
-          context: ${{ env.WORKING_DIR }}
+      # - name: Upload artifact for deployment job
+        # uses: actions/upload-artifact@v2
+        # with:
+         # name: .net-app
+          #path: Template
+          #context: ${{ env.WORKING_DIR }}
           
       
           
@@ -59,34 +59,21 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:  
-      #- name: Set up Azure Web App Service
-        #id: setup-webapp
-        #uses: azure/webapps-setup@v1
-        #with:
-          #app-name: 'TemplateApi'
-          #sku: 'B1'
-          # If you want to deploy to a specific region, uncomment and set the following parameter
-          #location: 'eastus'
-
-   
-      - name: Download artifact from buildMultistage job
-        uses: actions/download-artifact@v2
+    steps:
+      - name: Deploy to Azure Container Instances
+        uses: azure/container-instances-deploy@v1
         with:
-          name: .net-app
-          context: ${{ env.WORKING_DIR }}
-        
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'dantemplateapi'
-          #context: ${{ env.WORKING_DIR }}
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.TEMPLATEAPI }}
+          #resource-group: my-resource-group
+          #dns-name-label: my-container-instance
+          image: 10402033/templateapi:$(echo $(uuidv4) | tr "[:upper:]" "[:lower:]")
+          registry-login-server: myregistry.azurecr.io
+      
+          container-name: templatapi-container
+          container-ports: 80
+          publish-profile: ${{ secrets.TEMPLETEAPICONTAINTER }}
           package: .
-         
-    
+        
+
         
    
 
