@@ -1,0 +1,15 @@
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.csproj.AssemblyReference.cache
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.AssemblyInfoInputs.cache
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.AssemblyInfo.cs
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.csproj.CoreCompileInputs.cache
+/Users/danielo/Revature/dotNetFolde/Hangman/bin/Debug/net7.0/Hangman
+/Users/danielo/Revature/dotNetFolde/Hangman/bin/Debug/net7.0/Hangman.deps.json
+/Users/danielo/Revature/dotNetFolde/Hangman/bin/Debug/net7.0/Hangman.runtimeconfig.json
+/Users/danielo/Revature/dotNetFolde/Hangman/bin/Debug/net7.0/Hangman.dll
+/Users/danielo/Revature/dotNetFolde/Hangman/bin/Debug/net7.0/Hangman.pdb
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.dll
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/refint/Hangman.dll
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.pdb
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/Hangman.genruntimeconfig.cache
+/Users/danielo/Revature/dotNetFolde/Hangman/obj/Debug/net7.0/ref/Hangman.dll

@@ -1,0 +1,5 @@
+/Users/danielo/Revature/dotNetFolde/Hangman/HangmanGame/Hangman
+/Users/danielo/Revature/dotNetFolde/Hangman/HangmanGame/Hangman.dll
+/Users/danielo/Revature/dotNetFolde/Hangman/HangmanGame/Hangman.deps.json
+/Users/danielo/Revature/dotNetFolde/Hangman/HangmanGame/Hangman.runtimeconfig.json
+/Users/danielo/Revature/dotNetFolde/Hangman/HangmanGame/Hangman.pdb
