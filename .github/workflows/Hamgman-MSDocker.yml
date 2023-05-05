@@ -4,8 +4,8 @@ name: CI for Hangman Game
 on:
   push:
    branches: ["main"]
-   #paths:
-      #- HangmanMSDocker/**
+   paths:
+      - HangmanMSDocker/**
   pull_request:
    branches: ["main"]
   workflow_dispatch: 
