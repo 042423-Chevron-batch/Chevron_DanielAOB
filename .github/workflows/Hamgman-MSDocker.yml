@@ -38,6 +38,7 @@ jobs:
        - name: Build and push
          uses: docker/build-push-action@v4
          with:
+          context: ${{ env.WORKING_DIR }}
           push: true
           tag: 10402033/hangmanmultistage:v2
     
