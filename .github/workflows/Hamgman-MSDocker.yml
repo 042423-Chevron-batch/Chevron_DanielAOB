@@ -70,7 +70,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'danielsapi'
+          app-name: 'hangmanapi'
           #context: ${{ env.WORKING_DIR }}
           slot-name: 'Hangman Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D718F22B302D439CA3383E2215FA46EF }}
