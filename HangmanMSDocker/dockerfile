@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/nightly/sdk:7.0 as Build
+FROM mcr.microsoft.com/dotnet/nightly/sdk:7.0 as Builds
 
 WORKDIR /app
 
@@ -12,6 +12,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 As Run
 
 WORKDIR /app
 
-COPY --from=Build /app/Hangman/ .
+COPY --from=Builds /app/Hangman/ .
 
 CMD ["dotnet", "Hangman.dll"]
