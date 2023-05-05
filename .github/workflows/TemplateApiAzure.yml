@@ -60,15 +60,18 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Deploy to Azure Container Instances
-        uses: azure/aci-deploy@v1
+      - name: Deploy to container web app
+        uses: azure/webapps-deploy@v2
+
         with:
-          image: 10402033/templateapi:${{ github.sha }}-${{ env.RANDOM_TAG }}
-          registry-login-server: myregistry.azurecr.io
-          container-name: templatapi-container
-          container-ports: 80
+          images: 10402033/templateapi:${{ github.sha }}-${{ env.RANDOM_TAG }}
+          app-name: 'templatapi-container'
           publish-profile: ${{ secrets.TEMPAPICONTAINER }}
-          package: .
+          #registry-login-server: myregistry.azurecr.io
+          #container-name: templatapi-container
+          #container-ports: 80
+        
+         
 
 
         
