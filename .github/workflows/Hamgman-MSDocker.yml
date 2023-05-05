@@ -28,8 +28,11 @@ jobs:
        - name: Set up Docker Buildx
          uses: docker/setup-buildx-action@v2
          
-       - name: Push Docker image to Docker Hub
-         run: docker push 10402033/hangmanmultistage:latest
+       - name: Build and push
+         uses: docker/build-push-action@v4 ${{ env.WORKING_DIR }}
+         with:
+          push: true
+    
         
    
 
