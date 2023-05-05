@@ -47,7 +47,7 @@ jobs:
          uses: actions/upload-artifact@v2
          with:
           name: .net-app
-          path: HangmanApp
+          path: Hangman
           context: ${{ env.WORKING_DIR }}
           
           
