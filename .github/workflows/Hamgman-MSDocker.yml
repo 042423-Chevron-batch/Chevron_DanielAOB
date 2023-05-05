@@ -20,15 +20,15 @@ jobs:
        - name: checkout git repo
          uses: actions/checkout@v3
        - name: build docker image
-         run:  docker build -t 10402033/hangmanmultistage:multi ${{ env.WORKING_DIR }}
+         run:  docker build -t 10402033/hangmanmultistage:latest ${{ env.WORKING_DIR }}
          
        
        - name: tag and push the built image to Docker hub
          run: |
-            docker tag 10402033/hangmanmultistage 10402033/hangmanmultistage:multi
-            docker push 10402033/hangmanmultistage:multi
+            docker tag 10402033/hangmanmultistage 10402033/hangmanmultistage:latest
+            docker push 10402033/hangmanmultistage:latest
          env:
-           tag: multi
+           tag: latest
    
        - name: Upload artifact for deployment job
          uses: actions/upload-artifact@v2
