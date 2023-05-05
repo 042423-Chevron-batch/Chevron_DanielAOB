@@ -5,7 +5,7 @@ on:
   push:
    branches: ["main"]
    paths:
-      - HangmanGame/**
+      - HangmanMSDocker/**
   pull_request:
    branches: ["main"]
   workflow_dispatch: 
@@ -15,7 +15,7 @@ jobs:
   buildMultistage:
        runs-on: ubuntu-latest
        env:
-         WORKING_DIR: HangmanGame
+         WORKING_DIR: HangmanMSDocker
        steps:
        - name: checkout git repo
          uses: actions/checkout@v3
