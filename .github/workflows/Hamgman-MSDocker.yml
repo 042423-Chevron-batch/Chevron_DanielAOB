@@ -25,7 +25,7 @@ jobs:
        
        - name: tag and push the built image to Docker hub
          run: |
-            docker tag 10402033/hangmanmultistage 10402033/HangmanMultiStage:multi
+            docker tag 10402033/hangmanmultistage 10402033/hangmanmultistage:multi
             docker push 10402033/hangmanmultistage:multi
          env:
            tag: multi
