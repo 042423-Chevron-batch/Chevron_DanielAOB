@@ -12,6 +12,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 As Run
 
 WORKDIR /app
 
-COPY --from=BUILD /app/Hangman/ .
+COPY --from=Build /app/Hangman/ .
 
 CMD ["dotnet", "Hangman.dll"]
