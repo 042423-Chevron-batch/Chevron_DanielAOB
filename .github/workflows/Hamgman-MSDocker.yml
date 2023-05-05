@@ -24,11 +24,10 @@ jobs:
          
        
        - name: tag and push the built image to Docker hub
-         run: |
-            docker tag 10402033/hangmanmultistage 10402033/hangmanmultistage:latest
-            docker push 10402033/hangmanmultistage:latest
-         env:
-           tag: latest
+         uses: docker/build-push-action@v4
+         with: 
+          push: true
+          tags: user/app:latest
    
        - name: Upload artifact for deployment job
          uses: actions/upload-artifact@v2
