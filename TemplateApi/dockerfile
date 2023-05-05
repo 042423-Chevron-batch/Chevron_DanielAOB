@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/nightly/sdk:7.0 AS Build
+
+WORKDIR /app
+
+#COPY TemplateAPi.scproj .
+COPY . /app/
+
+RUN dotnet publish -o Template
+
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 As run
+
+WORKDIR /app
+
+COPY --from=Build /app/Template/ .
+
+CMD ["dotnet", "Template/TemplateApi.dll"]
+
