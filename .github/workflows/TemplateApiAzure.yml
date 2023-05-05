@@ -63,7 +63,7 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.TEMPLETEAPICONTAINTER }}
+          creds: ${{ secrets.TEMPAPICONTAINER }}
       - name: Deploy to Azure Container Instances
         uses: azure/aci-deploy@v1
         with:
@@ -71,7 +71,7 @@ jobs:
           registry-login-server: myregistry.azurecr.io
           container-name: templatapi-container
           container-ports: 80
-          publish-profile: ${{ secrets.TEMPLETEAPICONTAINTER }}
+          publish-profile: ${{ secrets.TEMPAPICONTAINER }}
           package: .
 
 
