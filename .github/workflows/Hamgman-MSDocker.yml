@@ -22,11 +22,11 @@ jobs:
        - name: build docker image
          run:  docker build -t 10402033/hangmanmultistage:latest ${{ env.WORKING_DIR }}
        
-       #- name: Set up QEMU
-         #uses: docker/setup-buildx-action@v2
+       - name: Set up QEMU
+         uses: docker/setup-buildx-action@v2
        
-       #- name: Set up Docker Buildx
-         #uses: docker/setup-buildx-action@v2
+       - name: Set up Docker Buildx
+         uses: docker/setup-buildx-action@v2
          
        - name: Push Docker image to Docker Hub
          run: docker push 10402033/hangmanmultistage:latest
