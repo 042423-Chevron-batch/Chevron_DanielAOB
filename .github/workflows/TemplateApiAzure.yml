@@ -60,10 +60,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.TEMPAPICONTAINER }}
       - name: Deploy to Azure Container Instances
         uses: azure/aci-deploy@v1
         with:
