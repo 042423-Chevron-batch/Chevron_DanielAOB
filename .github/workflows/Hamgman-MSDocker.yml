@@ -21,13 +21,17 @@ jobs:
          uses: actions/checkout@v3
        - name: build docker image
          run:  docker build -t 10402033/hangmanmultistage:latest ${{ env.WORKING_DIR }}
-         
        
-       - name: tag and push the built image to Docker hub
-         uses: docker/build-push-action@v4
-         with: 
+       - name: Set up QEMU
+         uses: docker/setup-qemu-action@v2
+       
+       - name: Set up Docker Buildx
+         uses: docker/setup-buildx-action@v2
+         with:
           push: true
-          tags: user/app:latest
+          tags: 10402033/hangmanmultistage:latest
+     
+
    
        - name: Upload artifact for deployment job
          uses: actions/upload-artifact@v2
