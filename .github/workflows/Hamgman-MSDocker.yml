@@ -23,7 +23,7 @@ jobs:
          run:  docker build -t 10402033/hangmanmultistage:multi ${{ env.WORKING_DIR }}
          
        - name: docker login
-         uses: docker/login-action@v1
+         uses: docker/login-action@v2.1.0
          with:
             registry: https://hub.docker.com/u/10402033
             username: ${{ secrets['10402033'] }}
