@@ -40,7 +40,7 @@ jobs:
          with:
           context: ${{ env.WORKING_DIR }}
           push: true
-          tags: 10402033/TemplateApi:v2
+          tags: 10402033/templateapi:v2
 
        
        - name: Upload artifact for deployment job
