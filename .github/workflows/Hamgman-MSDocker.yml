@@ -25,8 +25,8 @@ jobs:
        - name: Set up QEMU
          uses: docker/setup-buildx-action@v2
        
-       #- name: Set up Docker Buildx
-         #uses: docker/setup-buildx-action@v2
+       - name: Set up Docker Buildx
+         uses: docker/setup-buildx-action@v2
          
        - name: Push Docker image to Docker Hub
          run: docker push 10402033/hangmanmultistage:latest
