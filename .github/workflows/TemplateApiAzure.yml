@@ -40,7 +40,7 @@ jobs:
          with:
           context: ${{ env.WORKING_DIR }}
           push: true
-          tags: 10402033/templateapi:$(echo $(uuidv4) | tr "[:upper:]" "[:lower:]")
+          tags: 10402033/templateapi:${{ github.sha }}-${{ env.RANDOM_TAG }}
 
        
       # - name: Upload artifact for deployment job
@@ -65,7 +65,7 @@ jobs:
         with:
           #resource-group: my-resource-group
           #dns-name-label: my-container-instance
-          image: 10402033/templateapi:$(echo $(uuidv4) | tr "[:upper:]" "[:lower:]")
+          image: 10402033/templateapi:${{ github.sha }}-${{ env.RANDOM_TAG }}
           registry-login-server: myregistry.azurecr.io
       
           container-name: templatapi-container
