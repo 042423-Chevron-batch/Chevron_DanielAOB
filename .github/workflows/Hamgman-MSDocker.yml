@@ -20,7 +20,7 @@ jobs:
        - name: checkout git repo
          uses: actions/checkout@v3
        - name: build docker image
-         run:  docker build -t HangmanMultiStage:multi .
+         run:  docker build -t hangmanmultiStage:multi .
          
        - name: docker login
          uses: docker/login-action@v1
@@ -30,8 +30,8 @@ jobs:
             password: ${{ secrets.dckr_pat_aRrWp81RoGvGDWCvoCSMWlyCJpc }}
        - name: tag and push the built image to Docker hub
          run: |
-            docker tag 10402033/HangmanMultiStage 10402033/HangmanMultiStage:multi
-            docker push 10402033/HangmanMultiStage:multi
+            docker tag 10402033/Hangmanmultistage 10402033/HangmanMultiStage:multi
+            docker push 10402033/hangmanmultistage:multi
          env:
            tag: multi
    
