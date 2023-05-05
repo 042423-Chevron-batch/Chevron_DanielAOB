@@ -4,6 +4,8 @@ name: CI for Hangman Game
 on:
   push:
    branches: ["main"]
+   paths:
+      - HangmanGame/**
   pull_request:
    branches: ["main"]
   workflow_dispatch: 
