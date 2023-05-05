@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Deploy to Azure Container Instances
-        uses: azure/container-instances-deploy@v1
+        uses: azure/aci-deploy@v1
         with:
           #resource-group: my-resource-group
           #dns-name-label: my-container-instance
