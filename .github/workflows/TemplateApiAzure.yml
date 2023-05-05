@@ -47,7 +47,7 @@ jobs:
          uses: actions/upload-artifact@v2
          with:
           name: .net-app
-          path: TemplateApi
+          path: dantemplateapi
           context: ${{ env.WORKING_DIR }}
           
       
@@ -60,14 +60,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:  
-      - name: Set up Azure Web App Service
-        id: setup-webapp
-        uses: azure/webapps-setup@v1
-        with:
-          app-name: 'TemplateApi'
-          sku: 'B1'
+      #- name: Set up Azure Web App Service
+        #id: setup-webapp
+        #uses: azure/webapps-setup@v1
+        #with:
+          #app-name: 'TemplateApi'
+          #sku: 'B1'
           # If you want to deploy to a specific region, uncomment and set the following parameter
-          location: 'eastus'
+          #location: 'eastus'
 
    
       - name: Download artifact from buildMultistage job
@@ -80,10 +80,10 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'TemplateApi'
+          app-name: 'dantemplateapi'
           #context: ${{ env.WORKING_DIR }}
           slot-name: 'Production'
-          publish-profile: ${{ secrets.HANGMANAPI }}
+          publish-profile: ${{ secrets.TEMPLATEAPI }}
           package: .
          
     
