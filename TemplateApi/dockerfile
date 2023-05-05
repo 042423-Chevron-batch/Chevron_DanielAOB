@@ -13,5 +13,5 @@ WORKDIR /app
 
 COPY --from=Build /app/Template/ .
 
-CMD ["dotnet", "Template/TemplateApi.dll"]
+CMD ["dotnet", "TemplateApi.dll"]
 
