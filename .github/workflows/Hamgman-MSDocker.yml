@@ -48,6 +48,8 @@ jobs:
          with:
           name: .net-app
           path: HangmanApp
+          context: ${{ env.WORKING_DIR }}
+          
           
           
   deploy:
