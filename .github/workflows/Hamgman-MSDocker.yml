@@ -27,7 +27,7 @@ jobs:
          with:
             registry: https://hub.docker.com/u/10402033
             username: ${{ secrets.10402033 }}
-            password: ${{ secrets.DanOb0541297646 }}
+            password: ${{ secrets.dckr_pat_aRrWp81RoGvGDWCvoCSMWlyCJpc }}
        - name: tag and push the built image to Docker hub
          run: |
             docker tag 10402033/HangmanMultiStage 10402033/HangmanMultiStage:multi
