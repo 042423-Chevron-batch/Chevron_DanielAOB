@@ -5,7 +5,9 @@ name: Continuous Integration
 # This on clause specifies which event this pipeline/workflow will run
 
 on: 
-  push: 
+  push:
+    paths:
+      - Hangman/**
     branches: ["main"] #run whenever there is a push event to main branch
   pull_request:
     branches: ["main"] # run whenever there is a pull request to main branch
