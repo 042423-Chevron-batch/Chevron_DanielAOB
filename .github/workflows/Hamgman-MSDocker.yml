@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: buildMultistage
     environment:
-      name: 'Hangman Production'
+      name: 'HangmanProduction'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -72,9 +72,9 @@ jobs:
         with:
           app-name: 'hangmanapi'
           #context: ${{ env.WORKING_DIR }}
-          slot-name: 'Hangman Production'
-          publish-profile: ${{ secrets.HANGMANAPI }}
-          package: .
+          slot-name: 'HangmanProduction'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D718F22B302D439CA3383E2215FA46EF }}
+          package: ${{ env.WORKING_DIR }}
          
     
         
