@@ -73,7 +73,7 @@ jobs:
           app-name: 'danielsapi'
           #context: ${{ env.WORKING_DIR }}
           slot-name: 'Hangman Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36208D607FB74012A2EAAD0E60DF3791 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D718F22B302D439CA3383E2215FA46EF }}
           package: ${{ env.WORKING_DIR }}
          
     
