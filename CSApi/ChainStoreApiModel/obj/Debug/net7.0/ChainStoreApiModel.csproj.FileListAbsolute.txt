@@ -1,0 +1,12 @@
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.csproj.AssemblyReference.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.AssemblyInfoInputs.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.AssemblyInfo.cs
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.csproj.CoreCompileInputs.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/bin/Debug/net7.0/ChainStoreApiModel.deps.json
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/bin/Debug/net7.0/ChainStoreApiModel.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/bin/Debug/net7.0/ChainStoreApiModel.pdb
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/refint/ChainStoreApiModel.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ChainStoreApiModel.pdb
+/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/Debug/net7.0/ref/ChainStoreApiModel.dll

@@ -1,0 +1,15 @@
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/bin/Debug/net7.0/ChainStoreApiRepository.deps.json
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/bin/Debug/net7.0/ChainStoreApiRepository.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/bin/Debug/net7.0/ChainStoreApiRepository.pdb
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/bin/Debug/net7.0/ChainStoreApiModel.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/bin/Debug/net7.0/ChainStoreApiModel.pdb
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.csproj.AssemblyReference.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.AssemblyInfoInputs.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.AssemblyInfo.cs
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.csproj.CoreCompileInputs.cache
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.csproj.CopyComplete
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/refint/ChainStoreApiRepository.dll
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ChainStoreApiRepository.pdb
+/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/Debug/net7.0/ref/ChainStoreApiRepository.dll

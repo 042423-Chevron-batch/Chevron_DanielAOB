@@ -1,0 +1,336 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/danielo/Revature/CSApi/Tests.ChainStore/Tests.ChainStore.csproj": {}
+  },
+  "projects": {
+    "/Users/danielo/Revature/CSApi/ChainStoreApi/ChainStoreApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/danielo/Revature/CSApi/ChainStoreApi/ChainStoreApi.csproj",
+        "projectName": "ChainStoreApi",
+        "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApi/ChainStoreApi.csproj",
+        "packagesPath": "/Users/danielo/.nuget/packages/",
+        "outputPath": "/Users/danielo/Revature/CSApi/ChainStoreApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/danielo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj",
+        "projectName": "ChainStoreApiBusiness",
+        "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj",
+        "packagesPath": "/Users/danielo/.nuget/packages/",
+        "outputPath": "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/danielo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj",
+        "projectName": "ChainStoreApiModel",
+        "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj",
+        "packagesPath": "/Users/danielo/.nuget/packages/",
+        "outputPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/danielo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj",
+        "projectName": "ChainStoreApiRepository",
+        "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj",
+        "packagesPath": "/Users/danielo/.nuget/packages/",
+        "outputPath": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/danielo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/danielo/Revature/CSApi/Tests.ChainStore/Tests.ChainStore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/danielo/Revature/CSApi/Tests.ChainStore/Tests.ChainStore.csproj",
+        "projectName": "Tests.ChainStore",
+        "projectPath": "/Users/danielo/Revature/CSApi/Tests.ChainStore/Tests.ChainStore.csproj",
+        "packagesPath": "/Users/danielo/.nuget/packages/",
+        "outputPath": "/Users/danielo/Revature/CSApi/Tests.ChainStore/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/danielo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/danielo/Revature/CSApi/ChainStoreApi/ChainStoreApi.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApi/ChainStoreApi.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiBusiness/ChainStoreApiBusiness.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiModel/ChainStoreApiModel.csproj"
+              },
+              "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj": {
+                "projectPath": "/Users/danielo/Revature/CSApi/ChainStoreApiRepository/ChainStoreApiRepository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChainStoreApi\ChainStoreApi.csproj" />
+    <ProjectReference Include="..\ChainStoreApiBusiness\ChainStoreApiBusiness.csproj" />
+    <ProjectReference Include="..\ChainStoreApiModel\ChainStoreApiModel.csproj" />
+    <ProjectReference Include="..\ChainStoreApiRepository\ChainStoreApiRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Xunit" Version="2.4.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
