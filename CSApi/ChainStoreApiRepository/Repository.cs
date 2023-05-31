@@ -9,7 +9,7 @@ namespace ChainStoreApiRepository
 
         private static readonly string azuredb = "Server=tcp:chevron-batch-server.database.windows.net," +
         "1433;Initial Catalog=chevron_sql_database;Persist Security Info=False;" +
-        "User ID=chevronbatchserver;Password=Da0541297646.;MultipleActiveResultSets=False;Encrypt=True;" +
+        "User ID=chevronbatchserver;Password=;MultipleActiveResultSets=False;Encrypt=True;" +
         "TrustServerCertificate=False;Connection Timeout=30;";
 
         //Register new customers into database
