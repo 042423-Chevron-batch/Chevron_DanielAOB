@@ -1,0 +1,25 @@
+<style>
+    .content {
+        margin-top: 40px;
+    }
+
+    form {
+        margin-top: 16px;
+    }
+</style>
+
+
+<h2>Click the button below if you want to view your Order History</h2>
+
+
+<form class="content" (ngSubmit)="ShowOdres()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="AccesOrderHist.UserName"><br>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" [(ngModel)]="AccesOrderHist.Password"><br>
+
+    <!-- Add more input fields for other registration data -->
+
+    <button type="submit">LogIn</button>
+</form>

@@ -1,0 +1,22 @@
+<span style="background-color: antiquewhite;">Select the Products to buy</span>
+
+
+
+<form class="content" (ngSubmit)="onProdSelect()">
+    <label for="storelocation">Select location:</label>
+    <input type="text" id="storelocation" name="Select location" [(ngModel)]="buyProduct.SelectLocation"><br>
+
+    <label for="store">Select Store:</label>
+    <input type="text" id="store" name="Select Store" [(ngModel)]="buyProduct.SelectedStore"><br>
+
+    <label for="productselection">Select Product:</label>
+    <input type="text" id="productselection" name="Select Product" [(ngModel)]="buyProduct.SelectProduct"><br>
+
+    <label for="selectquant">Quantity to buy:</label>
+    <input type="text" id="selectquant" name="Quantity to buy" [(ngModel)]="buyProduct.OrderQuant"><br>
+
+
+    <button type="submit">Buy this Product</button>
+</form>
+<p>Purchase is {{ isProductAvailable ? 'available' : 'not available' }}</p>
+<pre> {{ isProductAvailable | json }}</pre>

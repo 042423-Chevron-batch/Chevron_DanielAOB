@@ -1,0 +1,21 @@
+<!-- <app-cust-order-history></app-cust-order-history><br><br> -->
+
+<span style="background-color: antiquewhite;">Please Select Store location and store name to see available
+    products</span>
+
+<form class="content" (ngSubmit)="availProducts()">
+    <label for="storelocation">Select location:</label>
+    <input type="text" id="storelocation" name="Select location" [(ngModel)]="availableProducts.SelectLocation"><br>
+
+    <label for="store">Select Store:</label>
+    <input type="text" id="store" name="Select Store" [(ngModel)]="availableProducts.SelectStore"><br>
+
+
+    <!-- Add more input fields for other registration data -->
+
+    <button type="submit">See Products</button>
+</form>
+
+
+<p>Here are products in chosen store and location with prices</p>
+<pre> {{ productsInStore | json }}</pre>

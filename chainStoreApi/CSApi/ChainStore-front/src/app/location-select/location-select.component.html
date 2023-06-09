@@ -1,0 +1,19 @@
+<span style="background-color: blanchedalmond;">Select the location</span><br>
+
+
+
+
+<input type="text" [(ngModel)]="selectedLocation.SelectLocation" placeholder="Enter location"><br>
+<button (click)="onLocationSelectClick()">See Stores in Location</button><br>
+
+<!-- <div *ngFor="let store of Stores">
+    {{ store | json }}
+    <p>Store ID: {{ store.StoreId }}</p>
+    <p>Store Location: {{ store.StoreLoc }}</p>
+    <p>Store Name: {{ store.StoreName }}</p>
+</div> -->
+
+
+<p>Here are the Stores in the the Location you selected</p><br>
+
+<pre> {{ Stores | json }}</pre>

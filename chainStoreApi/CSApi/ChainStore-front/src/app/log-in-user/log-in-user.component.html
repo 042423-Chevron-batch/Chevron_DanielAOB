@@ -1,0 +1,28 @@
+<!-- <a routerLink="/store-locations">Store Location</a><br><br> -->
+<!-- <router-outlet></router-outlet><br><br> -->
+
+<style>
+    .content {
+        margin-top: 40px;
+    }
+
+    form {
+        margin-top: 16px;
+    }
+</style>
+
+
+<h1>Please Log In</h1>
+
+
+<form class="content" (ngSubmit)="onLogInSubmit()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="login.UserName"><br>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" [(ngModel)]="login.Password"><br>
+
+    <!-- Add more input fields for other registration data -->
+
+    <button type="submit">LogIn</button>
+</form>
