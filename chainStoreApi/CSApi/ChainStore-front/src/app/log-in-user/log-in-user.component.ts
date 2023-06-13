@@ -43,8 +43,6 @@ export class LogInUserComponent {
 
         this.auth.setCurrentUser(this.personDetails)
 
-
-
         //this.personDetails = response;
         console.log("You are welcome ", + this.personDetails.fname);
 

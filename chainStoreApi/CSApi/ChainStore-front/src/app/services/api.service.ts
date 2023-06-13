@@ -58,8 +58,8 @@ export class ApiServices {
 
   ProductsInStore(getProducts: LocationStoreRequest): Observable<any> {
 
-    //const headers = { 'content-type': 'application/json' }
-    //const body = JSON.stringify(getProducts);
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(getProducts);
     //console.log(body)
     return this.http.post(ChainStore.AvailableProducts, getProducts);
   }

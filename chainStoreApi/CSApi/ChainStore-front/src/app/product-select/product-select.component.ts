@@ -22,9 +22,12 @@ export class ProductSelectComponent {
 
     this.apiService.ProductsInStore(this.getProdInStore).subscribe(
       (response: any) => {
-        //this.productsInStore = JSON.parse(JSON.stringify(response));
-        this.productsInStore = response;
+        this.productsInStore = JSON.parse(JSON.stringify(response));
+        //this.productsInStore = response;
+
         console.log(this.productsInStore);
+
+
       },
       (error: any) => {
         // Handle any errors that occurred during the API call

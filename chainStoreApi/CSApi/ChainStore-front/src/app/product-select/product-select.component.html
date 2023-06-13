@@ -4,8 +4,6 @@
     products</span>
 
 <form class="content" (ngSubmit)="availProducts()">
-    <!-- <label for="storelocation">Select location:</label>
-    <input type="text" id="storelocation" name="Select location" [(ngModel)]="availableProducts.SelectLocation"><br> -->
 
     <label for="store">Select Store:</label>
     <input type="text" id="store" name="Select Store" [(ngModel)]="getProdInStore.selectStore"><br>
@@ -16,10 +14,29 @@
     <button type="submit">See Products</button>
 </form>
 
+<div *ngIf="productsInStore">
 
-<ul *ngIf="availProducts">
-    <li *ngFor="let product of productsInStore ">{{ product }}</li>
-</ul>
+    <li *ngFor="let product of productsInStore">
+        <strong>Product Name:</strong> {{ product.productname }}<br>
+        <strong>Unit Price:</strong> {{ product.price }} <br>
+        <strong>Quantity In Stock:</strong> {{ product.prodquant }} <br>
+        <strong>Description:</strong> {{ product.description }}
+    </li>
+</div>
 
-<p>Here are products in chosen store and location with prices</p>
-<pre> {{ productsInStore | json }}</pre>
+
+<!-- <ul *ngIf="availProducts">
+    <li *ngFor="let product of productsInStore">
+        <strong>Product Name:</strong> {{ productsInStore. }} <br>
+        <strong>Unit Price:</strong> {{ product.Price }} <br>
+        <strong>Quantity In Stock:</strong> {{ product.Prodquant }} <br>
+        <strong>Description:</strong> {{ product.Description }}
+    </li>
+</ul> -->
+
+<!-- <p>Here are products in chosen store and location with prices</p>
+<pre> {{ productsInStore | json }}</pre> -->
+<!-- 
+<ul *ngIf="getStoreLocations">
+    <li *ngFor="let locations of storeLocations">{{ locations }}</li>
+</ul> -->
