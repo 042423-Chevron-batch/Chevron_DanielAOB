@@ -4,11 +4,11 @@
     products</span>
 
 <form class="content" (ngSubmit)="availProducts()">
-    <label for="storelocation">Select location:</label>
-    <input type="text" id="storelocation" name="Select location" [(ngModel)]="availableProducts.SelectLocation"><br>
+    <!-- <label for="storelocation">Select location:</label>
+    <input type="text" id="storelocation" name="Select location" [(ngModel)]="availableProducts.SelectLocation"><br> -->
 
     <label for="store">Select Store:</label>
-    <input type="text" id="store" name="Select Store" [(ngModel)]="availableProducts.SelectStore"><br>
+    <input type="text" id="store" name="Select Store" [(ngModel)]="getProdInStore.selectStore"><br>
 
 
     <!-- Add more input fields for other registration data -->
@@ -16,6 +16,10 @@
     <button type="submit">See Products</button>
 </form>
 
+
+<ul *ngIf="availProducts">
+    <li *ngFor="let product of productsInStore ">{{ product }}</li>
+</ul>
 
 <p>Here are products in chosen store and location with prices</p>
 <pre> {{ productsInStore | json }}</pre>

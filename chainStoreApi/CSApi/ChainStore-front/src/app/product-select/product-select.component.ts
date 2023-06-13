@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiServices } from '../api.service';
+import { ApiServices } from '../services/api.service';
 import { LocationStoreRequest } from '../models/LocationStoreRequest';
 import { ProductDetails } from '../models/Productdetails';
 
@@ -14,15 +14,16 @@ export class ProductSelectComponent {
   constructor(private apiService: ApiServices) { }
 
 
-  availableProducts: LocationStoreRequest = { SelectLocation: '', SelectStore: '' };
+  getProdInStore: LocationStoreRequest = { selectStore: '' };
 
   productsInStore: ProductDetails[] = [];
 
   availProducts() {
 
-    this.apiService.ProductsInStore(this.availableProducts).subscribe(
-      (response: ProductDetails[]) => {
-        this.productsInStore = JSON.parse(JSON.stringify(response));
+    this.apiService.ProductsInStore(this.getProdInStore).subscribe(
+      (response: any) => {
+        //this.productsInStore = JSON.parse(JSON.stringify(response));
+        this.productsInStore = response;
         console.log(this.productsInStore);
       },
       (error: any) => {
@@ -31,5 +32,4 @@ export class ProductSelectComponent {
       }
     )
   }
-
 }

@@ -25,4 +25,9 @@
     <!-- Add more input fields for other registration data -->
 
     <button type="submit">LogIn</button>
+    <div *ngIf="personDetails.fname; else failureMessage"><b>You are welcome {{ personDetails.fname }}</b></div>
+    <ng-template #failureMessage>
+        <div><b>Login with the right username and Password if registered. </b></div>
+    </ng-template>
+
 </form>

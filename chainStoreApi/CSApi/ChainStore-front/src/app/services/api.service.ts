@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ChainStore } from './environment';
-import { LogIn } from './models/LogIn';
-import { Register } from './models/Register';
-import { Person } from './models/Person';
-import { LocationRequest } from './models/LocationRequest';
-import { LocationStoreRequest } from './models/LocationStoreRequest';
-import { ProdQuantRequest } from './models/ProdQuantRequest';
+import { ChainStore } from '../environment';
+import { LogIn } from '../models/LogIn';
+import { Register } from '../models/Register';
+import { Person } from '../models/Person';
+import { LocationRequest } from '../models/LocationRequest';
+import { LocationStoreRequest } from '../models/LocationStoreRequest';
+import { ProdQuantRequest } from '../models/ProdQuantRequest';
 
 
 
@@ -56,14 +56,14 @@ export class ApiServices {
 
   //get products in store
 
-  ProductsInStore(LocationAndStore: LocationStoreRequest): Observable<any> {
+  ProductsInStore(getProducts: LocationStoreRequest): Observable<any> {
 
-    const headers = { 'content-type': 'application/json' }
-    const body = JSON.stringify(LocationAndStore);
-    console.log(body)
-    return this.http.post(ChainStore.AvailableProducts, LocationAndStore);
-
+    //const headers = { 'content-type': 'application/json' }
+    //const body = JSON.stringify(getProducts);
+    //console.log(body)
+    return this.http.post(ChainStore.AvailableProducts, getProducts);
   }
+
   //buy product 
   ChooseProducts(SelectProdquant: ProdQuantRequest): Observable<any> {
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LogIn } from '../models/LogIn';
 import { Order } from '../models/Order';
-import { ApiServices } from '../api.service';
+import { ApiServices } from '../services/api.service';
 
 @Component({
   selector: 'app-cust-order-history',

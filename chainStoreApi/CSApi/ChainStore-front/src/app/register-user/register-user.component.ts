@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogIn } from '../models/LogIn';
-import { ApiServices } from '../api.service';
+import { ApiServices } from '../services/api.service';
 import { Register } from '../models/Register';
 
 @Component({

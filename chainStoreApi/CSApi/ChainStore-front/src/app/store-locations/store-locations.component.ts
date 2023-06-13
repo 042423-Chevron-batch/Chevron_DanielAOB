@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogIn } from '../models/LogIn';
-import { ApiServices } from '../api.service';
+import { ApiServices } from '../services/api.service';
 import { LocationRequest } from '../models/LocationRequest';
 
 @Component({
@@ -10,8 +10,6 @@ import { LocationRequest } from '../models/LocationRequest';
   styleUrls: ['./store-locations.component.css']
 })
 export class StoreLocationsComponent {
-
-
 
 
   storeLocations: LocationRequest[] = [];

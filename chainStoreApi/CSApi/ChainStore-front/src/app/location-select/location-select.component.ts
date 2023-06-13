@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocationRequest } from '../models/LocationRequest';
-import { ApiServices } from '../api.service';
+import { ApiServices } from '../services/api.service';
 import { StoreList } from '../models/StoreList';
 
 @Component({
