@@ -1,4 +1,4 @@
-const chainstoreurl = "http://localhost:5175/ChainStoreApi";
+const chainstoreurl = "http://104.40.5.199:5175/ChainStoreApi";
 export const ChainStore = {
     Register: `${chainstoreurl}/RegisterUser`,
     logIn: `${chainstoreurl}/login`,
