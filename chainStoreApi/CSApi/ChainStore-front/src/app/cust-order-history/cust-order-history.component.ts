@@ -15,13 +15,13 @@ export class CustOrderHistoryComponent {
   constructor(private apiService: ApiServices) { }
 
 
-  AccesOrderHist: LogIn = { UserName: '', Password: '' };
+  AccesOrderHist: LogIn = { userName: '', password: '' };
 
 
   Orderdetails: Order[] = [];
 
 
-  ShowOdres() {
+  ShowOders() {
 
     this.apiService.OrderHis(this.AccesOrderHist).subscribe(
       (response: Order[]) => {

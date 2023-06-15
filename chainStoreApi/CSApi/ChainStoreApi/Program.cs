@@ -1,4 +1,7 @@
+
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,13 +23,14 @@ builder.Services.AddCors(options =>
 
 
 
+builder.Services.AddMemoryCache(); // Add the IMemoryCache service
 
 // Add session services
 builder.Services.AddDistributedMemoryCache(); // Add a distributed memory cache
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = "YourSessionCookieName"; // Set a unique cookie name for the session
-    options.IdleTimeout = TimeSpan.FromMinutes(1000); // Set the session timeout
+    options.IdleTimeout = TimeSpan.FromMinutes(5000); // Set the session timeout
     options.Cookie.HttpOnly = true; // Ensure the session cookie is accessible only through HTTP
     options.Cookie.IsEssential = true; // Mark the session cookie as essential
 });

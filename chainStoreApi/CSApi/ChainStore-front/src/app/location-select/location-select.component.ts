@@ -16,15 +16,17 @@ export class LocationSelectComponent {
 
 
   Stores: StoreList[] = [];
-
+  location: string = '';
 
   onLocationSelectClick() {
+
 
     // Call the login method of the API service and pass the login object
     this.apiService.SelectLocation(this.selectedLocation).subscribe(
       (response: StoreList[]) => {
         //this.Stores = response;
         this.Stores = JSON.parse(JSON.stringify(response));
+        this.location = this.selectedLocation.SelectLocation;
         console.log(this.Stores);
 
       },

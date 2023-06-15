@@ -8,9 +8,13 @@ using Microsoft.Extensions.Logging;
 using ChainStoreApiBusiness;
 using ChainStoreApiModel;
 using System.Text.Json;
-using Newtonsoft.Json;
+
+
+
 
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ChainStoreApi.Controllers
 {
@@ -19,19 +23,23 @@ namespace ChainStoreApi.Controllers
     public class ChainStoreApi : ControllerBase
     {
         private readonly ILogger<ChainStoreApi> _logger;
+        private readonly IMemoryCache _memoryCache;
 
 
-        public ChainStoreApi(ILogger<ChainStoreApi> logger)
+        public ChainStoreApi(ILogger<ChainStoreApi> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
+            _memoryCache = memoryCache;
         }
 
 
 
-
-
-        public Store? selectedStoreObj = null;
         public AddCustToDb addCustToDb = new AddCustToDb();
+
+
+        public Store? selectedStoreObj;
+
+
 
 
         // we will add another method
@@ -72,8 +80,8 @@ namespace ChainStoreApi.Controllers
             }
             else
             {
-                HttpContext.Session.SetString("LoggedInPerson", JsonConvert.SerializeObject(p));
 
+                SavedUserOb.logInUser = p;
                 return Ok(p!);
             }
         }
@@ -88,7 +96,12 @@ namespace ChainStoreApi.Controllers
             if (stores != null && stores.Count > 0)
             {
                 List<string> storeLocations = stores.Select(store => store.StoreLoc).ToList();
-                return Ok(storeLocations);
+
+                HashSet<string> distinctLocations = new HashSet<string>(storeLocations);
+
+
+
+                return Ok(distinctLocations);
             }
             else
             {
@@ -97,15 +110,10 @@ namespace ChainStoreApi.Controllers
         }
 
 
-
-
-
         [HttpPost("SelectStoreLocation")]
         public ActionResult<List<Store>> SelectLocation([FromBody] LocationRequest locationRequest)
         {
-
             string selectedLocation = locationRequest.SelectLocation;
-
             ChainstoreBusinessUtilityLayer rpsb = new ChainstoreBusinessUtilityLayer();
             List<Store>? stores = rpsb.getStores();
 
@@ -119,23 +127,24 @@ namespace ChainStoreApi.Controllers
                     {
 
                         // Found the selected store location
-                        availableStores!.Add(new Store
+                        availableStores.Add(new Store
                         (
                             store.StoreId,
                             store.StoreName,
                             store.StoreLoc
                         ));
 
-
-
-
                     }
                 }
 
                 if (availableStores != null)
                 {
-                    // Return stores within the selected location
-                    return Ok(availableStores);
+
+                    SavedStoreObj.AvailableStores = availableStores;
+
+                    List<string> StoreNames = availableStores.Select(s => s.StoreName).ToList();
+
+                    return Ok(StoreNames);
                 }
                 else
                 {
@@ -151,85 +160,69 @@ namespace ChainStoreApi.Controllers
         }
 
 
-
         //Get all products in the chosen store
 
         [HttpPost("GetProducts")]
-        public ActionResult<List<Product>> ProductsInStore([FromBody] LocationStoreRequest request)
+        public ActionResult<List<Product>> ProductsInStore([FromBody] StoreRequest storeRequest)
         {
-            // Call the method that returns ActionResult<List<Store>>
-            ActionResult<List<Store>>? result = SelectLocation(new LocationRequest { SelectLocation = request.SelectLocation });
+            List<Store> availableStores = SavedStoreObj.AvailableStores;
 
-            if (result.Result is OkObjectResult okResult && okResult.Value is List<Store> stores)
-
+            if (storeRequest is not null)
             {
-                selectedStoreObj = stores!.FirstOrDefault(s => s.StoreName == request.SelectStore);
+                selectedStoreObj = availableStores!.FirstOrDefault(s => s.StoreName == storeRequest.selectStore);
 
-                //add store details to orderlist
-
-                //Store orderStore = AddCustToDb.Storedetails(selectedStoreObj!);
-
-                //AddCustToDb.Storedetails(orderStore);
 
 
                 if (selectedStoreObj != null)
                 {
+
+                    _memoryCache.Set("SelectedStore", selectedStoreObj);
                     // create an instance of the business layer class.
                     ChainstoreBusinessUtilityLayer rpsb = new ChainstoreBusinessUtilityLayer();
                     //List<Product> products = rpsb.productsInStore();
                     List<Product> products = rpsb.productsInStore(selectedStoreObj);
+
+
+
+
                     if (products.Count > 0)
                     {
-                        // Products found in the store
+
+                        SavedProdObj.ProductSaved = products;
+
                         return Ok(products);
                     }
                     else
                     {
-                        // No products found in the store
                         return NotFound();
-                    }
 
+                    }
                 }
                 else
                 {
-                    // Selected store not found
                     return NotFound();
                 }
-
-
-            }
-            else if (result.Result is NotFoundResult)
-            {
-
-
-                return NotFound();
             }
             else
             {
-                // Handle any other unexpected scenarios
-                // ...
-
                 return StatusCode(500);
             }
-
         }
+
 
 
         //Let customer choose product(s) and quantities
         [HttpPost("ChooseProduct")]
-        public ActionResult<bool> SelectProduct([FromBody] ProdQuantRequest prodAndQuant)
+        public ActionResult<Order> SelectProduct([FromBody] ProdQuantRequest prodAndQuant)
         {
-            // Retrieve the selected store from the request body
-            string selectedStore = prodAndQuant.SelectedStore;
+            List<Product> availableProducts = SavedProdObj.ProductSaved;
 
-            // Call the ProductsInStore method to retrieve the products
-            ActionResult<List<Product>> result = ProductsInStore(new LocationStoreRequest { SelectStore = prodAndQuant.SelectedStore, SelectLocation = prodAndQuant.SelectLocation });
-
-            //ActionResult<Person> logindeta = Login();
-
-            if (result.Result is OkObjectResult okResult && okResult.Value is List<Product> products)
+            if (availableProducts != null)
             {
-                Product? selectedProductObj = products!.FirstOrDefault(p => p.Productname == prodAndQuant.SelectProduct);
+                Product? selectedProductObj = availableProducts!.FirstOrDefault(p => p.Productname == prodAndQuant.SelectProduct);
+
+                //Console.Write(selectedStoreObj!.StoreLoc);
+                Console.Write(selectedProductObj!.Productname);
 
                 if (selectedProductObj != null)
                 {
@@ -238,67 +231,56 @@ namespace ChainStoreApi.Controllers
 
                     if (prodAndQuant.orderQuant <= Availablequantity)
                     {
-                        if (selectedStoreObj != null)
+
+                        if (!_memoryCache.TryGetValue("SelectedStore", out selectedStoreObj))
                         {
-                            //Add customer order to AddCustToDb
-                            Order order = new Order(selectedProductObj!, prodAndQuant.orderQuant, prodAndQuant.orderQuant * selectedProductObj.Price, selectedStoreObj!);
+                            return BadRequest(new { message = "No store selected." });
+                        }
 
 
+                        //Add customer order to AddCustToDb
+                        Order order = new Order(selectedProductObj.ProductId, selectedProductObj.Productname!, selectedProductObj.Description!, prodAndQuant.orderQuant, selectedProductObj.Price, prodAndQuant.orderQuant * selectedProductObj.Price, selectedStoreObj!);
 
-                            // Add the order to the Orders list in AddCustToDb
-                            addCustToDb.Orders.Add(order);
+                        // Add the order to the Orders list in AddCustToDb
+                        addCustToDb.Orders.Add(order);
 
-                            string? serializedPerson = HttpContext.Session.GetString("LoggedInPerson");
-                            if (serializedPerson == null)
-                            {
-                                // Person not found, handle the error accordingly
-                                return BadRequest(new { message = "User not logged in." });
-                            }
+                        Person loggedInPerson = SavedUserOb.logInUser;
 
-                            // Deserialize the Person object
-                            Person loggedInPerson = JsonConvert.DeserializeObject<Person>(serializedPerson);
+                        ChainstoreBusinessUtilityLayer rpsp = new ChainstoreBusinessUtilityLayer();
+                        (bool PurchAddedToOrder, Order OrderedItem) = rpsp.AddCustomerPurchase(addCustToDb.Orders, loggedInPerson);
 
-
-                            ChainstoreBusinessUtilityLayer rpsp = new ChainstoreBusinessUtilityLayer();
-                            bool PurchAddedToOrder = rpsp.AddCustomerPurchase(addCustToDb.Orders, loggedInPerson);
-
+                        if (PurchAddedToOrder)
+                        {
                             ChainstoreBusinessUtilityLayer rpsb = new ChainstoreBusinessUtilityLayer();
+
                             // Decrease inventory and process the order
+
                             bool UpdatedInventory = rpsb.DecreaseInventory(selectedProductObj.Productname, prodAndQuant.orderQuant);
 
-                            if (UpdatedInventory)
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
+                            return OrderedItem;
                         }
                         else
                         {
-                            return StatusCode(500);
 
+                            return BadRequest(new { message = "Your order was not successful, maybe ordered quantity is more than what we have in stock" });
                         }
-
-
                     }
                     else
                     {
-                        //insufficient quabtities
-                        return false;
+                        //insufficient quantities
+                        return BadRequest(new { message = "Quantity more than what we have in stock" });
                     }
                 }
                 else
                 {
                     // Selected product not found
-                    return false;
+                    return BadRequest(new { message = "Did yo select a product and quantity? " });
                 }
             }
             else
             {
                 // Error occurred in retrieving the products
-                return false;
+                return BadRequest(new { message = "Product object is empty " });
             }
 
         }
@@ -316,6 +298,22 @@ namespace ChainStoreApi.Controllers
 
             if (ordersHist != null) return Ok(ordersHist);
             else return StatusCode(422, new { message = "There was a problem fetching the stores list. Please try again." });
+        }
+
+
+        //customerStatistics
+
+        [HttpPost("customerStatistics")]
+        public ActionResult<OrderStat> OrderStats([FromBody] LogIn logindetail)
+        {
+
+            // create an instance of the business layer class.
+            ChainstoreBusinessUtilityLayer rpsb = new ChainstoreBusinessUtilityLayer();
+            // call the business layer method to get the stores.
+            OrderStat orderStatics = rpsb.customerStatistics(logindetail);
+
+            if (orderStatics != null) return Ok(orderStatics);
+            else return StatusCode(422, new { message = "There was a problem fetching order statistics. Please try again." });
         }
 
     }// EoC

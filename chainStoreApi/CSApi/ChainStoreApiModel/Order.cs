@@ -8,21 +8,27 @@ namespace ChainStoreApiModel
 {
     public class Order
     {
+
         public Order() { }
-        public Order(Product prod, int orderedQuant, decimal totalPrice, Store store)
+        public Order(Guid productId, string productname, string description, int orderedQuant, decimal unitPrice, decimal totalPrice, Store store)
         {
             //this.Person = person;
-            this.Prod = prod;
+            this.ProductId = productId;
+            this.Productname = productname;
+            this.Description = description;
             this.OrderedQuant = orderedQuant;
             this.TotalPrice = totalPrice;
             this.Store = store;
+            this.UnitPrice = unitPrice;
         }
 
         public Guid OrderId { set; get; }
         public DateTime OrderTime { get; set; }
         //public Person Person { get; set; }
 
-        public Product Prod { get; set; }
+        public Guid ProductId { get; set; }
+        public string Productname { get; set; }
+        public string Description { get; set; }
 
         public int OrderedQuant { get; set; }
 
@@ -31,7 +37,7 @@ namespace ChainStoreApiModel
 
         public Store Store { get; set; }
 
-        public OrderPerson? Customer { get; set; }
+        // public OrderPerson? Customer { get; set; }
 
 
 

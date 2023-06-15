@@ -1,22 +1,26 @@
 <span style="background-color: antiquewhite;">Select the Products to buy</span>
 
-
-
 <form class="content" (ngSubmit)="onProdSelect()">
-    <label for="storelocation">Select location:</label>
-    <input type="text" id="storelocation" name="Select location" [(ngModel)]="buyProduct.SelectLocation"><br>
-
-    <label for="store">Select Store:</label>
-    <input type="text" id="store" name="Select Store" [(ngModel)]="buyProduct.SelectedStore"><br>
-
     <label for="productselection">Select Product:</label>
-    <input type="text" id="productselection" name="Select Product" [(ngModel)]="buyProduct.SelectProduct"><br>
+    <input type="text" id="productselection" name="Select Product" [(ngModel)]="buyProduct.selectProduct"><br>
 
     <label for="selectquant">Quantity to buy:</label>
-    <input type="text" id="selectquant" name="Quantity to buy" [(ngModel)]="buyProduct.OrderQuant"><br>
-
+    <input type="text" id="selectquant" name="Quantity to buy" [(ngModel)]="buyProduct.orderQuant"><br>
 
     <button type="submit">Buy this Product</button>
 </form>
-<p>Purchase is {{ isProductAvailable ? 'available' : 'not available' }}</p>
-<pre> {{ isProductAvailable | json }}</pre>
+
+<div *ngIf="productsPurchased" class="order-details">
+    <ul>
+        <li><strong>OrderId:</strong> {{ productsPurchased.orderId }}</li>
+        <li><strong>Order Time:</strong> {{ productsPurchased.orderTime }}</li>
+        <li><strong>ProductId:</strong> {{ productsPurchased.productId }}</li>
+        <li><strong>Product Name:</strong> {{ productsPurchased.productname }}</li>
+        <li><strong>Quantity Ordered:</strong> {{ productsPurchased.orderedQuant }}</li>
+        <li><strong>Unit Price:</strong> {{ productsPurchased.unitPrice }}</li>
+        <li><strong>Total Price:</strong> {{ productsPurchased.totalPrice }}</li>
+        <li><strong>StoreId:</strong> {{ productsPurchased.store.storeId }}</li>
+        <li><strong>Store Ordered From:</strong> {{ productsPurchased.store.storeName }}</li>
+        <li><strong>Store Location:</strong> {{ productsPurchased.store.storeLoc }}</li>
+    </ul>
+</div>

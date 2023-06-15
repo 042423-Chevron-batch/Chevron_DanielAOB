@@ -3,6 +3,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LogIn } from '../models/LogIn';
 import { ApiServices } from '../services/api.service';
 import { LocationRequest } from '../models/LocationRequest';
+import { LocationService } from '../shared/location.service';
 
 @Component({
   selector: 'app-store-locations',
@@ -15,7 +16,12 @@ export class StoreLocationsComponent {
   storeLocations: LocationRequest[] = [];
 
 
-  constructor(private apiService: ApiServices) { }
+  constructor(private apiService: ApiServices, private locationService: LocationService) { }
+
+
+  onLocationClick(location: string) {
+    this.locationService.setSelectedLocation(location);
+  }
 
   getStoreLocations() {
     // Call the login method of the API service 

@@ -1,0 +1,33 @@
+.location-select {
+    margin-top: 40px;
+}
+
+.location-select input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.location-select button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.location-select ul {
+    list-style-type: none;
+    margin-top: 16px;
+}
+
+.location-select li {
+    margin-bottom: 8px;
+}
+
+.location-select .heading {
+    font-weight: bold;
+    margin-bottom: 8px;
+}

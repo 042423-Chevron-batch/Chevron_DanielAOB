@@ -16,7 +16,7 @@ export class LogInUserComponent {
 
   constructor(private apiService: ApiServices, private auth: AuthService) { }
 
-  login: LogIn = { UserName: '', Password: '' };
+  login: LogIn = { userName: '', password: '' };
 
 
   personDetails: Person = {

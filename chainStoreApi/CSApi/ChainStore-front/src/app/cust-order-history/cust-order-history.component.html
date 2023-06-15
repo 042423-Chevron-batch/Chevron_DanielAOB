@@ -8,18 +8,37 @@
     }
 </style>
 
-
 <h2>Click the button below if you want to view your Order History</h2>
 
-
-<form class="content" (ngSubmit)="ShowOdres()">
+<form class="content" (ngSubmit)="ShowOders()">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="AccesOrderHist.UserName"><br>
+    <input type="text" id="username" name="username" [(ngModel)]="AccesOrderHist.userName"><br>
 
     <label for="password">Password:</label>
-    <input type="text" id="password" name="password" [(ngModel)]="AccesOrderHist.Password"><br>
+    <input type="text" id="password" name="password" [(ngModel)]="AccesOrderHist.password"><br>
 
     <!-- Add more input fields for other registration data -->
 
     <button type="submit">LogIn</button>
 </form>
+
+<div *ngIf="Orderdetails.length > 0">
+    <h3>Order History:</h3>
+    <ul>
+
+        <li *ngFor="let order of Orderdetails; let i = index">
+            <ng-container
+                *ngIf="i === 0 || (order.custFirstName !== Orderdetails[i - 1].custFirstName && order.custLastName !== Orderdetails[i - 1].custLastName)">
+                <strong>Customer Name:</strong> {{ order.custFirstName }} {{ order.custLastName }}<br><br>
+            </ng-container><br>
+            <strong>Order ID:</strong> {{ order.orderId }}<br>
+            <strong>Order Time:</strong> {{ order.orderTime }}<br>
+            <strong>Product Name:</strong> {{ order.prodName }}<br>
+            <strong>Quantity Ordered:</strong> {{ order.orderedQuant }}<br>
+            <strong>Unit Price:</strong> {{ order.unitPrice }}<br>
+            <strong>Total Price:</strong> {{ order.totalPrice }}<br>
+            <strong>Store Location:</strong> {{ order.storeLoc }}<br>
+            <strong>Store Name:</strong> {{ order.storeName }}<br><br>
+        </li>
+    </ul>
+</div>

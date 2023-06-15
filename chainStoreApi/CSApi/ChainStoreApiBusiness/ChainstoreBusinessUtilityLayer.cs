@@ -100,27 +100,26 @@ namespace ChainStoreApiBusiness
 
         //add customer purchase 
 
-        public bool AddCustomerPurchase(List<Order> orders, Person orderperson)
+        public (bool, Order) AddCustomerPurchase(List<Order> orders, Person orderperson)
         {
             RepositoryLayer repo = new RepositoryLayer();
 
             foreach (Order order in orders)
             {
 
-                bool custOrder = repo.AddToCustomerOrder(order, orderperson);
-                if (custOrder)
+                (bool orderOccepted, Order custOrder) = repo.AddToCustomerOrder(order, orderperson);
+                if (orderOccepted)
                 {
-                    return custOrder;
+                    return (true, custOrder);
                 }
                 else
                 {
-                    return false;
+                    return (false, null);
                 }
-
 
             }
             //
-            return true;
+            return (true, null);
         }
 
 
@@ -184,7 +183,26 @@ namespace ChainStoreApiBusiness
             }
         }
 
+
+
+
+
+
+        public OrderStat customerStatistics(LogIn login)
+        {
+            RepositoryLayer repo = new RepositoryLayer();
+
+            OrderStat customerStats = repo.GetOrderStatistics(login);
+
+            if (customerStats != null)
+            {
+                return customerStats;
+            }
+            else
+            {
+                return customerStats;
+            }
+
+        }
     }
-
-
 }

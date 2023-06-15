@@ -1,21 +1,9 @@
-<!-- <app-location-select></app-location-select><br><br> -->
+<div class="location-select">
+    <h1>Click below to see available Locations</h1>
 
-<style>
-    .content {
-        margin-top: 40px;
-    }
+    <button (click)="getStoreLocations()">Show Locations</button>
 
-    form {
-        margin-top: 16px;
-    }
-</style>
-
-
-<h1>Click below to see available Locations</h1>
-
-
-<button (click)="getStoreLocations()">Show Items</button>
-
-<ul *ngIf="getStoreLocations">
-    <li *ngFor="let locations of storeLocations">{{ locations }}</li>
-</ul>
+    <ul *ngIf="storeLocations.length > 0">
+        <li *ngFor="let location of storeLocations">{{ location }}</li>
+    </ul>
+</div>

@@ -3,6 +3,7 @@ import { RouterModule, Router, Routes, CanActivateFn, RouterStateSnapshot, Activ
 import { LogInUserComponent } from './log-in-user/log-in-user.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { StoreLocationsComponent } from './store-locations/store-locations.component';
+
 import { LocationSelectComponent } from './location-select/location-select.component';
 import { ProductSelectComponent } from './product-select/product-select.component';
 import { GetproductsStoreComponent } from './getproducts-store/getproducts-store.component';
@@ -27,10 +28,11 @@ const routes: Routes = [
   { path: 'log-in-user', component: LogInUserComponent },
   { path: 'register-user', component: RegisterUserComponent },
   { path: 'store-locations', component: StoreLocationsComponent, canActivate: [canActivateMain] },
-  { path: 'location-select', component: LocationSelectComponent },
-  { path: 'product-select', component: ProductSelectComponent },
-  { path: 'getproducts-store', component: GetproductsStoreComponent },
-  { path: 'cust-order-history', component: CustOrderHistoryComponent },
+
+  { path: 'location-select', component: LocationSelectComponent, canActivate: [canActivateMain] },
+  { path: 'product-select', component: ProductSelectComponent, canActivate: [canActivateMain] },
+  { path: 'getproducts-store', component: GetproductsStoreComponent, canActivate: [canActivateMain] },
+  { path: 'cust-order-history', component: CustOrderHistoryComponent, canActivate: [canActivateMain] },
   // Other routes...
 
   // Add a default route to redirect to a specific component if no route matches

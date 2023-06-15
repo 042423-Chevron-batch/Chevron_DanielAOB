@@ -14,20 +14,27 @@
 
 <h1>Please Log In</h1>
 
+<div class="login-form">
+    <form class="content" (ngSubmit)="onLogInSubmit()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="login.userName"><br>
 
-<form class="content" (ngSubmit)="onLogInSubmit()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="login.UserName"><br>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" [(ngModel)]="login.password"><br>
 
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password" [(ngModel)]="login.Password"><br>
 
-    <!-- Add more input fields for other registration data -->
 
-    <button type="submit">LogIn</button>
-    <div *ngIf="personDetails.fname; else failureMessage"><b>You are welcome {{ personDetails.fname }}</b></div>
-    <ng-template #failureMessage>
-        <div><b>Login with the right username and Password if registered. </b></div>
-    </ng-template>
 
-</form>
+
+
+        <!-- Add more input fields for other registration data -->
+
+        <button type="submit">LogIn</button>
+        <div *ngIf="personDetails.fname; else failureMessage"><b>You are welcome {{ personDetails.fname }}</b></div>
+        <ng-template #failureMessage>
+            <div><b>Login with the right username and Password if registered. </b></div>
+        </ng-template>
+
+    </form>
+
+</div>

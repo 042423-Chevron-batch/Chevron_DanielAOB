@@ -10,7 +10,6 @@ import { ProductDetails } from '../models/Productdetails';
 })
 export class ProductSelectComponent {
 
-
   constructor(private apiService: ApiServices) { }
 
 
@@ -20,13 +19,12 @@ export class ProductSelectComponent {
 
   availProducts() {
 
-    this.apiService.ProductsInStore(this.getProdInStore).subscribe(
+    return this.apiService.ProductsInStore(this.getProdInStore).subscribe(
       (response: any) => {
         this.productsInStore = JSON.parse(JSON.stringify(response));
         //this.productsInStore = response;
 
         console.log(this.productsInStore);
-
 
       },
       (error: any) => {
@@ -35,4 +33,7 @@ export class ProductSelectComponent {
       }
     )
   }
+
+
+
 }

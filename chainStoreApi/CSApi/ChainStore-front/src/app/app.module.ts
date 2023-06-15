@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { LogInUserComponent } from './log-in-user/log-in-user.component';
 import { StoreLocationsComponent } from './store-locations/store-locations.component';
+
+
 import { LocationSelectComponent } from './location-select/location-select.component';
 import { GetproductsStoreComponent } from './getproducts-store/getproducts-store.component';
 import { ProductSelectComponent } from './product-select/product-select.component';

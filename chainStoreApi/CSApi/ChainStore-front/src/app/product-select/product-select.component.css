@@ -1,0 +1,16 @@
+.product-grid {
+    /* Add styling for the product grid container */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.product-card {
+    /* Add styling for each product card */
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add similar CSS classes for other elements as needed */

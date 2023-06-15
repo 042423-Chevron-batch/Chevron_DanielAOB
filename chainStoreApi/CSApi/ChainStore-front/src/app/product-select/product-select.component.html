@@ -8,35 +8,24 @@
     <label for="store">Select Store:</label>
     <input type="text" id="store" name="Select Store" [(ngModel)]="getProdInStore.selectStore"><br>
 
-
     <!-- Add more input fields for other registration data -->
 
     <button type="submit">See Products</button>
 </form>
 
-<div *ngIf="productsInStore">
-
-    <li *ngFor="let product of productsInStore">
-        <strong>Product Name:</strong> {{ product.productname }}<br>
-        <strong>Unit Price:</strong> {{ product.price }} <br>
-        <strong>Quantity In Stock:</strong> {{ product.prodquant }} <br>
-        <strong>Description:</strong> {{ product.description }}
-    </li>
+<div class="product-grid">
+    <div class="product-card" *ngFor="let product of productsInStore">
+        <div class="product-info">
+            <strong class="product-name">Product Name:</strong> {{ product.productname }}
+            <br>
+            <strong class="product-price">Unit Price:</strong> {{ product.price }}
+            <br>
+            <strong class="product-quantity">Quantity In Stock:</strong> {{ product.prodquant }}
+            <br>
+            <strong class="product-description">Description:</strong> {{ product.description }} <br>
+        </div>
+        <div class="product-image">
+            <!-- Display product image here -->
+        </div>
+    </div>
 </div>
-
-
-<!-- <ul *ngIf="availProducts">
-    <li *ngFor="let product of productsInStore">
-        <strong>Product Name:</strong> {{ productsInStore. }} <br>
-        <strong>Unit Price:</strong> {{ product.Price }} <br>
-        <strong>Quantity In Stock:</strong> {{ product.Prodquant }} <br>
-        <strong>Description:</strong> {{ product.Description }}
-    </li>
-</ul> -->
-
-<!-- <p>Here are products in chosen store and location with prices</p>
-<pre> {{ productsInStore | json }}</pre> -->
-<!-- 
-<ul *ngIf="getStoreLocations">
-    <li *ngFor="let locations of storeLocations">{{ locations }}</li>
-</ul> -->

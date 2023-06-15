@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ChainStoreApiModel
 {
-    public class LocationStoreRequest
+    public class StoreRequest
     {
-
-        public string SelectLocation { get; set; }
-        public string SelectStore { get; set; }
+        public string selectStore { get; set; }
 
     }
 }

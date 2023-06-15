@@ -138,9 +138,6 @@ namespace ChainStoreApiRepository
 
 
 
-
-
-
         // Get store names and locations from database for user to choose from
         public List<Store> StoreDetails()
         {
@@ -230,7 +227,7 @@ namespace ChainStoreApiRepository
             string updateStoreProductQuery = "UPDATE StoreProduct SET ProdQuant = i.ProdQuant " +
             "FROM StoreProduct sp " +
             "JOIN Inventory i ON sp.SPId = i.StoreProductId " +
-            "WHERE i.Prodname = @prodname";
+            "WHERE LOWER(i.Prodname) = LOWER(@prodname)";
 
 
 
@@ -257,8 +254,6 @@ namespace ChainStoreApiRepository
                     StoreProductcommand.Parameters.AddWithValue("@quantity", quantity);
                     StoreProductcommand.Parameters.AddWithValue("@Prodname", Prodname);
 
-
-
                     int StoreProductRowsAffected = StoreProductcommand.ExecuteNonQuery();
 
 
@@ -271,10 +266,9 @@ namespace ChainStoreApiRepository
 
         // Create Order tabel an add customer after confirming that product exit
 
-        public bool AddToCustomerOrder(Order order, Person orderperson)
+        public (bool, Order) AddToCustomerOrder(Order order, Person orderperson)
         {
-
-            DateTime orderTime = DateTime.Now;
+            //DateTime orderTime = DateTime.Now;
 
             string tableName = "Orders";
 
@@ -310,10 +304,6 @@ namespace ChainStoreApiRepository
     "(SELECT StoreId FROM Store WHERE StoreName = @storeName), " +
     "@storeName, @storeLoc)";
 
-
-
-
-
             using (SqlConnection connection = new SqlConnection(azuredb))
             {
                 connection.Open();
@@ -326,15 +316,12 @@ namespace ChainStoreApiRepository
                 using (SqlCommand commandquery = new SqlCommand(query, connection))
                 {
                     commandquery.Parameters.AddWithValue("@customerId", orderperson.CustomerId);
-                    if (!string.IsNullOrEmpty(orderperson.Fname))
-                        commandquery.Parameters.AddWithValue("@custFirstName", orderperson.Fname);
-                    else
-                        commandquery.Parameters.AddWithValue("@custFirstName", DBNull.Value);
+                    commandquery.Parameters.AddWithValue("@custFirstName", orderperson.Fname);
                     //commandquery.Parameters.AddWithValue("@custFirstName", orderperson.Fname);
                     commandquery.Parameters.AddWithValue("@custLastName", orderperson.Lname);
                     commandquery.Parameters.AddWithValue("@custUserName", orderperson.UserName);
                     commandquery.Parameters.AddWithValue("@custEmail", orderperson.Email);
-                    commandquery.Parameters.AddWithValue("@prodname", order.Prod.Productname);
+                    commandquery.Parameters.AddWithValue("@prodname", order.Productname);
                     commandquery.Parameters.AddWithValue("@orderedQuant", order.OrderedQuant);
                     commandquery.Parameters.AddWithValue("@storeName", order.Store.StoreName);
                     commandquery.Parameters.AddWithValue("@storeLoc", order.Store.StoreLoc);
@@ -343,10 +330,12 @@ namespace ChainStoreApiRepository
                     int rowsAffected = commandquery.ExecuteNonQuery();
 
                     if (rowsAffected <= 0)
-                        return false;
+                    {
+                        return (false, null);
+                    }
                 }
             }
-            return true;
+            return (true, order);
         }
 
 
@@ -354,17 +343,15 @@ namespace ChainStoreApiRepository
         public List<orderHist> customerOrderHistory(LogIn custOderHist)
         {
 
-
-
             List<orderHist> ordersHist = new List<orderHist>();
-
 
             string queryCustomerOder = "SELECT O.OrderId,O.OrderTime,O.CustomerId, O.CustFirstName,O.CustLastName,O.CustUserName, " +
             "O.CustEmail,O.ProductId,O.Prodname,O.OrderedQuant, " +
             "O.UnitPrice,O.TotalPrice,O.StoreId, O.StoreName,O.StoreLoc " +
             "From Orders O " +
             "JOIN Customers C ON C.CustomerId=O.CustomerId " +
-            "WHERE CustUserName =@Username AND  CustomerPassword=@password ";
+            "WHERE LOWER(UserName) =LOWER(@Username) AND  LOWER(CustomerPassword)=LOWER(@password) ";
+
 
             using (SqlConnection connection = new SqlConnection(azuredb))
             {
@@ -407,53 +394,58 @@ namespace ChainStoreApiRepository
 
             }
         }
+
+
+
+
+
+        //basic statistics
+        public OrderStat GetOrderStatistics(LogIn login)
+        {
+            string queryCustomerOrder = @"
+                SELECT COUNT(*) AS TotalOrders,
+                AVG(O.TotalPrice) AS AverageOrderPrice,
+                MAX(O.TotalPrice) AS MaximumOrderPrice,
+                MIN(O.TotalPrice) AS MinimumOrderPrice,
+                (
+                    SELECT TOP 1 Prodname
+                    FROM Orders
+                    GROUP BY Prodname
+                    ORDER BY COUNT(*) DESC
+                ) AS MostOrderedProduct
+                FROM Orders O
+                JOIN Customers C ON C.CustomerId = O.CustomerId
+                WHERE LOWER(CustUserName) = LOWER(@Username) AND LOWER(CustomerPassword) = LOWER(@password)";
+
+
+            using (SqlConnection connection = new SqlConnection(azuredb))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(queryCustomerOrder, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", login.userName);
+                    command.Parameters.AddWithValue("@password", login.password);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        OrderStat orderStatistics = new OrderStat(reader.GetInt32(0), reader.GetString(4), reader.GetDecimal(1), reader.GetDecimal(2), reader.GetDecimal(3));
+
+                        return orderStatistics;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
     }
-
 }
-
-
-//basic statistics
-
-
-
-// public Dictionary<string, object> GetCustomerOrderStatistics(string custFirstName, string custLastName)
-// {
-//     string queryCustomerOrder = "SELECT COUNT(*) AS TotalOrders, " +
-//                                 "AVG(O.TotalPrice) AS AverageOrderPrice, " +
-//                                 "MAX(O.TotalPrice) AS MaximumOrderPrice, " +
-//                                 "MIN(O.TotalPrice) AS MinimumOrderPrice " +
-//                                 "FROM Orders O " +
-//                                 "JOIN Product P ON P.ProductId = O.ProductId " +
-//                                 "WHERE CustFirstName = @custFirstName AND CustLastName = @custLastName";
-
-//     Dictionary<string, object> orderStatistics = new Dictionary<string, object>();
-
-//     using (SqlConnection connection = new SqlConnection(azuredb))
-//     {
-//         connection.Open();
-
-//         using (SqlCommand command = new SqlCommand(queryCustomerOrder, connection))
-//         {
-//             command.Parameters.AddWithValue("@custFirstName", custFirstName);
-//             command.Parameters.AddWithValue("@custLastName", custLastName);
-//             SqlDataReader reader = command.ExecuteReader();
-
-//             if (reader.Read())
-//             {
-//                 orderStatistics["TotalOrders"] = reader["TotalOrders"];
-//                 orderStatistics["AverageOrderPrice"] = reader["AverageOrderPrice"];
-//                 orderStatistics["MaximumOrderPrice"] = reader["MaximumOrderPrice"];
-//                 orderStatistics["MinimumOrderPrice"] = reader["MinimumOrderPrice"];
-//             }
-//         }
-//     }
-
-//     return orderStatistics;
-// }
-
-
-
-
 
 
 

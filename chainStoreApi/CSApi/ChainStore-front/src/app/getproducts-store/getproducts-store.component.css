@@ -1,0 +1,12 @@
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details li {
+    margin-bottom: 10px;
+}
+
+.order-details strong {
+    font-weight: bold;
+}
